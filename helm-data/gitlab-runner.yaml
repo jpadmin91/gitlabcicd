@@ -1,0 +1,20 @@
+
+gitlabUrl: http://ad2540c4a669d11e8b28f0255a73bf0b-1148521533.eu-west-1.elb.amazonaws.com/
+runnerRegistrationToken: "uBRgyoqEJc3y7Vgfo5Ap"
+concurrent: 10
+checkInterval: 30
+rbac:
+  create: yes
+  clusterWideAccess: yes
+runners:
+  image: ubuntu:16.04
+  privileged: true
+  builds:
+    cpuRequests: 100m
+    memoryRequests: 128Mi
+  services:
+    cpuRequests: 100m
+    memoryRequests: 128Mi
+  helpers:
+    cpuRequests: 100m
+    memoryRequests: 128Mi

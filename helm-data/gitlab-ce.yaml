@@ -1,0 +1,50 @@
+
+image: gitlab/gitlab-ce:9.4.1-ce.0
+externalUrl: http://gitlab.io/
+gitlabRootPassword: "12jprakash21"
+serviceType: LoadBalancer
+ingress:
+  annotations:
+  enabled: false
+  tls:
+  url: "gitlab.cluster.local"
+sshPort: 22
+httpPort: 80
+httpsPort: 443
+livenessPort: http
+readinessPort: http
+resources:
+  requests:
+    memory: 1Gi
+    cpu: 500m
+  limits:
+    memory: 2Gi
+    cpu: 1
+persistence:
+  gitlabEtc:
+    enabled: true
+    size: 1Gi
+    accessMode: ReadWriteOnce
+  gitlabData:
+    enabled: true
+    size: 10Gi
+    accessMode: ReadWriteOnce
+postgresql:
+  imageTag: "9.6"
+  cpu: 1000m
+  memory: 1Gi
+  postgresUser: gitlab
+  postgresPassword: gitlab
+  postgresDatabase: gitlab
+  persistence:
+    size: 10Gi
+    
+redis:
+  redisPassword: "gitlab"
+
+  resources:
+    requests:
+      memory: 1Gi
+
+  persistence:
+    size: 10Gi
